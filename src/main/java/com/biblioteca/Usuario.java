@@ -1,12 +1,13 @@
 package com.biblioteca;
 
-/**@author Manuel Enrique Vargas Béjar
+/**
+ * @author Manuel Enrique Vargas Béjar
  * @version 0.1a
- * Funciones de Usuarios.
- * 1.0 - Buscar libros por título, autor o categoría.
- * 1.1 - Mostrar todos los libros disponibles
- * 1.2 - Realizar préstamos de libros.
- * 1.3 - Devolver libros prestados.
+ *          Funciones de Usuarios.
+ *          1.0 - Buscar libros por título, autor o categoría.
+ *          1.1 - Mostrar todos los libros disponibles
+ *          1.2 - Realizar préstamos de libros.
+ *          1.3 - Devolver libros prestados.
  */
 
 public class Usuario {
@@ -21,19 +22,21 @@ public class Usuario {
         this.dni = dni;
         this.idUsuario = idUsuario;
     }
-    public String getnombre(){
+
+    public String getnombre() {
         return nombre;
     }
-    public String getapellido(){
+
+    public String getapellido() {
         return apellido;
     }
-    public String getdni(){
+
+    public String getdni() {
         return dni;
     }
-    public String getidusuario(){
+
+    public String getidusuario() {
         return idUsuario;
     }
 
-    }
-        
-
+}

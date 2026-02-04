@@ -3,7 +3,7 @@ package com.biblioteca;
 /**
  * Representa la lógica para gestionar la creación y borrado de libros
  * Permite:
- * Crear libros asignandoles: titulo, autor, isbn y un genero 
+ * Crear libros asignandoles: titulo, autor, isbn y un genero
  * 
  * @author Raúl
  * @version 0.1a

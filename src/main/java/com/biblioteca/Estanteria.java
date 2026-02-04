@@ -1,7 +1,7 @@
 package com.biblioteca;
 
-public class Main {
+public class Estanteria {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        
     }
 }
