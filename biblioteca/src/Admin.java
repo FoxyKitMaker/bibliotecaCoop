@@ -31,11 +31,10 @@ public class Admin {
     private static String email = "correoAdmin@admin.com";
     private int idAdmin;
 
-    public Admin(String nombre, String apellidos, String dni, String email, int idAdmin) {
+    public Admin(String nombre, String apellidos, String dni, int idAdmin) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.dni = dni;
-        this.email = email;
         this.idAdmin = idAdmin;
     }
 
