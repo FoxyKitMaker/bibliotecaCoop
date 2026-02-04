@@ -1,3 +1,5 @@
+package com.biblioteca;
+
 public enum GeneroLib {
     NARRATIVA,
     CIENCIA_FICCION,

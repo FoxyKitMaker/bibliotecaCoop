@@ -1,3 +1,5 @@
+package com.biblioteca;
+
 /**@author Manuel Enrique Vargas Béjar
  * @version 0.1a
  * Funciones de Usuarios.

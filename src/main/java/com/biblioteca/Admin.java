@@ -1,3 +1,5 @@
+package com.biblioteca;
+
 /**
  * Representa la lógica para gestionar los roles de administrador de una
  * biblioteca y sus funciones

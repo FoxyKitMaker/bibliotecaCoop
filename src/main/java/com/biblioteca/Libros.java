@@ -1,3 +1,5 @@
+package com.biblioteca;
+
 /**
  * Representa la lógica para gestionar la creación y borrado de libros
  * Permite:
