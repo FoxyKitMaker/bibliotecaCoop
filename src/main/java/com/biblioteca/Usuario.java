@@ -11,9 +11,9 @@ package com.biblioteca;
  */
 
 public class Usuario {
-    private String nombre;
-    private String apellido;
-    private String dni;
+    protected String nombre;
+    protected String apellido;
+    protected String dni;
     private String idUsuario;
     private String email;
 
@@ -45,5 +45,23 @@ public class Usuario {
         return email;
     }
 
+    public void buscarLibro(Biblioteca biblioteca, String busqueda) {
+    // Obtenemos el array para no llamar al getter todo el tiempo
+    Libro[] lista = biblioteca.getLibros();
+    String b = busqueda.toLowerCase();
 
+    // Recorremos desde 0 hasta la longitud del array
+    for (int i = 0; i < lista.length; i++) {
+        
+        // Accedemos al libro en la posición 'i'
+        Libro libroActual = lista[i];
+
+        if (libroActual.getTitulo().toLowerCase().contains(b) || 
+            libroActual.getAutor().toLowerCase().contains(b)  ||
+            libroActual.getCategoria().toLowerCase().contains(b)) {
+            
+            System.out.println("Índice [" + i + "] - Encontrado: " + libroActual.getTitulo());
+        }
+    }
+}
 }

@@ -14,6 +14,7 @@ public class Libros {
     private String autor;
     private String isbn;
     private GeneroLib generoLib;
+    private String disponibilidad;
 
     public Libros(String titulo, String autor, String isbn, GeneroLib generoLib) {
         this.titulo = titulo;
@@ -38,4 +39,8 @@ public class Libros {
         return generoLib;
     }
 
+    public String getdisponibilidad() {
+        return disponibilidad;
+    }
+    
 }
