@@ -16,13 +16,15 @@ public class Usuario {
     protected String dni;
     private String idUsuario;
     private String email;
+    private String contrasenia;
 
 
-    public Usuario(String nombre, String apellido, String dni, String idUsuario) {
+    public Usuario(String nombre, String apellido, String dni, String idUsuario, String email, String contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.idUsuario = idUsuario;
+        this.contrasenia = contrasenia;
     }
 
     public String getnombre() {
@@ -45,6 +47,11 @@ public class Usuario {
         return email;
     }
 
+    public String getcontrasenia(){
+        return contrasenia;
+    }
+    /*crear array de usuario donde alojara los usuarios creados */
+
     public void buscarLibro(Biblioteca biblioteca, String busqueda) {
     // Obtenemos el array para no llamar al getter todo el tiempo
     Libros[] lista = biblioteca.getLibros();
@@ -58,9 +65,11 @@ public class Usuario {
 
         if (libroActual.getTitulo().toLowerCase().contains(b) || 
             libroActual.getAutor().toLowerCase().contains(b)  ||
-            libroActual.getCategoria().toLowerCase().contains(b)) {
+            libroActual.getGeneroLib().contains(b)) {
             
             System.out.println("Índice [" + i + "] - Encontrado: " + libroActual.getTitulo());
+        }else{
+            System.out.println("Libro no encontrado");
         }
     }
 }
