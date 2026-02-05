@@ -1,5 +1,7 @@
 package com.biblioteca;
 
+import java.nio.file.attribute.UserPrincipalLookupService;
+
 /**
  * Representa la lógica para gestionar los roles de administrador de una
  * biblioteca y sus funciones
@@ -95,39 +97,72 @@ public class Admin extends Usuario {
      */
     public Libros[] eliminarLibros(Libros[] librosActuales, Libros libroAEliminar) {
         
-        // Crear un nuevo array con una posición más
+        // Crear un nuevo array con una posición menos
         Libros[] nuevosLibros = new Libros[librosActuales.length - 1];
+        int j = 0;
+        boolean encontrado = false;
 
         for(int i = 0; i < librosActuales.length; i++) {
-            if(librosActuales[i].getIsbn().equals(libroAEliminar.getIsbn())) {
-                librosActuales[i] = null;
+            // Si encontramos el libro por ISBN, nos lo saltamos
+            if(!encontrado && librosActuales[i].getIsbn().equals(libroAEliminar.getIsbn())) {
+                encontrado = true;
+                continue; 
             }
-
+            // Si no es el libro a borrar y hay espacio, copiamos
+            if (j < nuevosLibros.length) {
+                nuevosLibros[j++] = librosActuales[i];
+            }
         }
 
-        // Copiar los libros actuales al nuevo array
-        for(int i = 0; i < librosActuales.length; i++) {
-            nuevosLibros[i] = librosActuales[i];
-        }
+        // Si no se encontró el libro, devolvemos el original para evitar errores
+        if (!encontrado) return librosActuales;
 
         return nuevosLibros;
     }
 
     /**
-     * Usa método buscarLibros de la superclase Ususario, que busca por título, autor o género
-     * 
-     * @param inventarioActual El array actual de libros.
-     * @param nuevoLibro       El objeto Libro que se desea eliminar.
-     * @return Un nuevo array de Libros sin el ejemplar eliminado.
+     * Usa método buscarLibro de la superclase Usuario.
+     * Se ha corregido la firma para coincidir con la clase padre.
      */
-
-    public Libros buscarLibros() {
-        return super.buscarLibros();
-    }
-    
-    public Libros mostrarLibros() {
-        return super.mostrarLibros();
+    @Override
+    public void buscarLibro(Biblioteca biblioteca, String busqueda) {
+        super.buscarLibro(biblioteca, busqueda);
     }
 
-    
+    /**
+     * Muestra todos los libros disponibles.
+     * (La clase Usuario no tenía este método implementado, se añade aquí la lógica).
+     */
+    public void mostrarLibros(Libros[] libros) {
+        for (Libros libro : libros) {
+            if (libro != null) {
+                System.out.println("Título: " + libro.getTitulo() + " | Autor: " + libro.getAutor());
+            }
+        }
+    }
+
+    public void agregarUsuario (String nombre, String apellidos, String dni, String contraseña, Usuario[] usuariosActuales) {
+
+        // El constructor de Usuario pide (nombre, apellido, dni, idUsuario).
+        // No acepta email ni contraseña en el constructor actual. Usamos DNI como ID provisional.
+        Usuario nuevoUsuario = new Usuario(nombre, apellidos, dni, dni);
+        
+        Usuario[] nuevoArrayUsuarios = new Usuario[usuariosActuales.length + 1];
+
+        for(int i = 0; i < usuariosActuales.length; i++) {
+            nuevoArrayUsuarios[i] = usuariosActuales[i];
+        }
+
+        nuevoArrayUsuarios[nuevoArrayUsuarios.length - 1] = nuevoUsuario;
+    }
+
+    public void mostrarInfoUsuarios(Usuario nuevoArrayUsuarios[]) {
+
+        for(int i = 0; i < nuevoArrayUsuarios.length; i++) {
+            
+            System.out.println(nuevoArrayUsuarios[i].getnombre() + " " + nuevoArrayUsuarios[i].getapellido());
+            System.out.println(nuevoArrayUsuarios[i].getdni());
+            System.out.println(nuevoArrayUsuarios[i].getemail());
+        }
+    }
 }
