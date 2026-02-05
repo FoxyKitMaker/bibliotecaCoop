@@ -61,5 +61,6 @@ public enum GeneroLib {
     REALISMO_MAGICO,
     NOVELA_HISTORICA,
     CRIMEN_REAL,
-    NEGOCIOS
+    NEGOCIOS,
+    GORE
 }

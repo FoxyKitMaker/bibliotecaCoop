@@ -25,27 +25,24 @@ package com.biblioteca;
  * @version 0.1a
  */
 
-public class Admin {
+public class Admin extends Usuario {
 
-    private String nombre;
-    private String apellidos;
-    private String dni;
     private static String email = "correoAdmin@admin.com";
     private int idAdmin;
+    private static String contraseña = "elPatica69";
 
     public Admin(String nombre, String apellidos, String dni, int idAdmin) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.dni = dni;
+        // Se pasa String.valueOf(idAdmin) para que el idUsuario del padre coincida con el idAdmin
+        super(nombre, apellidos, dni, String.valueOf(idAdmin));
         this.idAdmin = idAdmin;
     }
 
     public String getNombre() {
-        return nombre;
+        return super.getnombre();
     }
 
     public String getApellidos() {
-        return apellidos;
+        return super.getapellido();
     }
 
     public static String getEmail() {
@@ -53,11 +50,84 @@ public class Admin {
     }
 
     public String getDni() {
-        return dni;
+        return super.getdni();
     }
 
     public int getIdAdmin() {
         return idAdmin;
     }
+
+    public static String getContraseña() {
+        return contraseña;
+    }
+
+    /**
+     * Agrega un nuevo libro al array existente creando uno nuevo sin espacios
+     * vacíos.
+     * 
+     * @param inventarioActual El array actual de libros.
+     * @param nuevoLibro       El objeto Libro que se desea añadir.
+     * @return Un nuevo array de Libros que incluye el nuevo ejemplar.
+     */
+    public Libros[] agregarLibros(Libros[] librosActuales, Libros nuevoLibro) {
+        
+        // Crear un nuevo array con una posición más
+        Libros[] nuevosLibros = new Libros[librosActuales.length + 1];
+
+        // Copiar los libros actuales al nuevo array
+        for(int i = 0; i < librosActuales.length; i++) {
+            nuevosLibros[i] = librosActuales[i];
+        }
+
+        // Insertar el nuevo libro en la última posición
+        nuevosLibros[nuevosLibros.length - 1] = nuevoLibro;
+
+        return nuevosLibros;
+    }
+
+    /**
+     * Elimina un nuevo libro al array existente creando uno nuevo sin espacios
+     * vacíos.
+     * 
+     * @param inventarioActual El array actual de libros.
+     * @param nuevoLibro       El objeto Libro que se desea eliminar.
+     * @return Un nuevo array de Libros sin el ejemplar eliminado.
+     */
+    public Libros[] eliminarLibros(Libros[] librosActuales, Libros libroAEliminar) {
+        
+        // Crear un nuevo array con una posición más
+        Libros[] nuevosLibros = new Libros[librosActuales.length - 1];
+
+        for(int i = 0; i < librosActuales.length; i++) {
+            if(librosActuales[i].getIsbn().equals(libroAEliminar.getIsbn())) {
+                librosActuales[i] = null;
+            }
+
+        }
+
+        // Copiar los libros actuales al nuevo array
+        for(int i = 0; i < librosActuales.length; i++) {
+            nuevosLibros[i] = librosActuales[i];
+        }
+
+        return nuevosLibros;
+    }
+
+    /**
+     * Usa método buscarLibros de la superclase Ususario, que busca por título, autor o género
+     * 
+     * @param inventarioActual El array actual de libros.
+     * @param nuevoLibro       El objeto Libro que se desea eliminar.
+     * @return Un nuevo array de Libros sin el ejemplar eliminado.
+     */
+
+    public Libros buscarLibros() {
+        return super.buscarLibros();
+    }
+    
+    public Libros mostrarLibros() {
+        return super.mostrarLibros();
+    }
+
     
 }
