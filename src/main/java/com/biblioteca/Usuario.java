@@ -15,6 +15,8 @@ public class Usuario {
     private String apellido;
     private String dni;
     private String idUsuario;
+    private String email;
+
 
     public Usuario(String nombre, String apellido, String dni, String idUsuario) {
         this.nombre = nombre;
@@ -38,5 +40,10 @@ public class Usuario {
     public String getidusuario() {
         return idUsuario;
     }
+    
+    public String getemail() {
+        return email;
+    }
+
 
 }

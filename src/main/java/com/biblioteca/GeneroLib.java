@@ -48,6 +48,8 @@ public enum GeneroLib {
     PERIODISMO,
     HUMOR,
     EROTICA,
+    FURRO,
+    ASTERIANO,
     JUVENIL,
     CLASICOS,
     MITOLOGIA,
