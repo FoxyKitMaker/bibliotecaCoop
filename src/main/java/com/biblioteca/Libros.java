@@ -5,7 +5,7 @@ package com.biblioteca;
  * Permite:
  * Crear libros asignandoles: titulo, autor, isbn y un genero
  * 
- * @author Raúl
+ * @author Claudio García Camons
  * @version 0.1a
  */
 

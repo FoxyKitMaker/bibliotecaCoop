@@ -38,5 +38,6 @@ El código fuente se encuentra en el paquete `com.biblioteca` y consta de las si
 
 ## 👤 Autores
 
-*   **Raúl** - *Gestión de Libros y Administración*
+*   **Raúl Carrera Custodio** - *Gestión de Libros y Administración*
 *   **Manuel Enrique Vargas Béjar** - *Funciones de Usuarios*
+*   **Claudio García Camons** - *Funciones de Libros*

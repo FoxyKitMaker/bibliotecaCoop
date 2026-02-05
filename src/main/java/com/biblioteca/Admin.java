@@ -21,7 +21,7 @@ package com.biblioteca;
  * 4.2.- Listar los libros más prestados.
  * 4.3.- Mostrar qué usuario tiene más préstamos activos.
  * 
- * @author Raúl
+ * @author Raúl Carrera Custodio
  * @version 0.1a
  */
 
