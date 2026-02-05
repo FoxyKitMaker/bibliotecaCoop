@@ -19,7 +19,7 @@ public class Usuario {
     private String contrasenia;
 
 
-    public Usuario(String nombre, String apellido, String dni, String idUsuario, String email, String contrasena) {
+    public Usuario(String nombre, String apellido, String dni, String idUsuario, String email, String contrasenia) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
