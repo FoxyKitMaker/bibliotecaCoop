@@ -16,11 +16,12 @@ public class Libros {
     private GeneroLib generoLib;
     private String disponibilidad;
 
-    public Libros(String titulo, String autor, String isbn, GeneroLib generoLib) {
+    public Libros(String titulo, String autor, String isbn, GeneroLib generoLib, String disponibilidad) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.generoLib = generoLib;
+        this.disponibilidad = disponibilidad;
     }
 
     public String getTitulo() {

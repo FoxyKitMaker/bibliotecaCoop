@@ -85,6 +85,7 @@ public class Usuario {
             System.out.println("No se encontraron libros con ese criterio.");
         }
     }
-    
-
+    public void librosDisponibles(Biblioteca biblioteca){
+        
+    }
 }
