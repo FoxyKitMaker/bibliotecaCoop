@@ -14,11 +14,11 @@ public class Usuario {
     protected String nombre;
     protected String apellido;
     protected String dni;
-    private String idUsuario;
+    private int idUsuario;
     private String email;
     private String contrasenia;
 
-    public Usuario(String nombre, String apellido, String dni, String idUsuario, String email, String contrasenia) {
+    public Usuario(String nombre, String apellido, String dni, int idUsuario, String email, String contrasenia) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -38,7 +38,7 @@ public class Usuario {
         return dni;
     }
 
-    public String getidusuario() {
+    public int getidusuario() {
         return idUsuario;
     }
 
@@ -60,7 +60,7 @@ public class Usuario {
      */
     public void buscarLibro(Biblioteca biblioteca, String busqueda) {
 
-        Libros[] listaLibros = biblioteca.getArrayLibros();
+        Libros[] listaLibros = biblioteca.getLibros();
 
         System.out.println("--- RESULTADOS DE BÚSQUEDA: '" + busqueda + "' ---");
         boolean encontradoAlguno = false; // Para saber si no encontramos nada al final
