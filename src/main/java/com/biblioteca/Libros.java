@@ -15,13 +15,15 @@ public class Libros {
     private String isbn;
     private GeneroLib generoLib;
     private String disponibilidad;
+    private int nPrestamos;
 
-    public Libros(String titulo, String autor, String isbn, GeneroLib generoLib, String disponibilidad) {
+    public Libros(String titulo, String autor, String isbn, GeneroLib generoLib, String disponibilidad,int nPrestamos) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.generoLib = generoLib;
         this.disponibilidad = disponibilidad;
+        this.nPrestamos = nPrestamos;
     }
 
     public String getTitulo() {
@@ -42,6 +44,10 @@ public class Libros {
 
     public String getdisponibilidad() {
         return disponibilidad;
+    }
+
+    public int getnPrestamos(){
+        return nPrestamos;
     }
     
 }

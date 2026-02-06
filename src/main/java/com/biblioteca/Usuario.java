@@ -86,6 +86,9 @@ public class Usuario {
         }
     }
     public void librosDisponibles(Biblioteca biblioteca){
+        System.out.println("Catalogo de libros disponibles ");
+        Libros [] librosDisponible;
+        
         
     }
 }
