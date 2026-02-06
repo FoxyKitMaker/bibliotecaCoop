@@ -1,7 +1,5 @@
 package com.biblioteca;
 
-import java.nio.file.attribute.UserPrincipalLookupService;
-
 /**
  * Representa la lógica para gestionar los roles de administrador de una
  * biblioteca y sus funciones
@@ -29,14 +27,15 @@ import java.nio.file.attribute.UserPrincipalLookupService;
 
 public class Admin extends Usuario {
 
-    private static String email = "correoAdmin@admin.com";
+    private static String emailAdmin = "correoAdmin@admin.com";
     private int idAdmin;
     private static String contraseña = "elPatica69";
 
-    public Admin(String nombre, String apellidos, String dni, int idAdmin) {
-        // Se pasa String.valueOf(idAdmin) para que el idUsuario del padre coincida con el idAdmin
-        super(nombre, apellidos, dni, String.valueOf(idAdmin));
+    public Admin(String nombre, String apellidos, String dni, String contrasenia, int idAdmin, int idUsuario, String email) {
+        super(nombre, apellidos, dni, idUsuario, email, contrasenia);
         this.idAdmin = idAdmin;
+        emailAdmin = email;
+        idAdmin = idUsuario;
     }
 
     public String getNombre() {
@@ -47,8 +46,8 @@ public class Admin extends Usuario {
         return super.getapellido();
     }
 
-    public static String getEmail() {
-        return email;
+    public static String getEmailAdmin() {
+        return emailAdmin;
     }
 
     public String getDni() {
@@ -103,12 +102,12 @@ public class Admin extends Usuario {
         boolean encontrado = false;
 
         for(int i = 0; i < librosActuales.length; i++) {
-            // Si encontramos el libro por ISBN, nos lo saltamos
+            // Si encontramos el libro por ISBN nos lo saltamos
             if(!encontrado && librosActuales[i].getIsbn().equals(libroAEliminar.getIsbn())) {
                 encontrado = true;
                 continue; 
             }
-            // Si no es el libro a borrar y hay espacio, copiamos
+            // Si no es el libro a borrar y hay espacio copiamos
             if (j < nuevosLibros.length) {
                 nuevosLibros[j++] = librosActuales[i];
             }
@@ -129,9 +128,10 @@ public class Admin extends Usuario {
         super.buscarLibro(biblioteca, busqueda);
     }
 
-    /**
+    /** 
      * Muestra todos los libros disponibles.
      * (La clase Usuario no tenía este método implementado, se añade aquí la lógica).
+     * @param Libro[] Array de los libros
      */
     public void mostrarLibros(Libros[] libros) {
         for (Libros libro : libros) {
@@ -141,11 +141,23 @@ public class Admin extends Usuario {
         }
     }
 
-    public void agregarUsuario (String nombre, String apellidos, String dni, String contraseña, Usuario[] usuariosActuales) {
+    /**
+     * Lógica para agregar usuarios
+     * @param nombre El nombre del usuario
+     * @param apellidos Los apellidos del usuario
+     * @param dni El dni del ususario
+     * @param contrasenia La contraseña provisional que se le asigna al usuario
+     * @param idUsuario El identificador del usuario
+     * @param email El email del usuario
+     * @param usuariosActuales[] Array con los usuarios actuales
+     * 
+     */
+
+    public void agregarUsuario (String nombre, String apellidos, String dni, String contrasenia, int idUsuario, String email, Usuario[] usuariosActuales) {
 
         // El constructor de Usuario pide (nombre, apellido, dni, idUsuario).
-        // No acepta email ni contraseña en el constructor actual. Usamos DNI como ID provisional.
-        Usuario nuevoUsuario = new Usuario(nombre, apellidos, dni, dni);
+        // No acepta email ni contraseña en el constructor actual, se usa el DNI como ID provisional.
+        Usuario nuevoUsuario = new Usuario(nombre, apellidos, dni, idUsuario, email, contrasenia);
         
         Usuario[] nuevoArrayUsuarios = new Usuario[usuariosActuales.length + 1];
 
@@ -155,6 +167,11 @@ public class Admin extends Usuario {
 
         nuevoArrayUsuarios[nuevoArrayUsuarios.length - 1] = nuevoUsuario;
     }
+
+    /**
+     * Lógica para recorrer el array con los usuarios y mostrar su información
+     * @param nuevoArrayUsuarios[] Array de los usuarios
+     */
 
     public void mostrarInfoUsuarios(Usuario nuevoArrayUsuarios[]) {
 
