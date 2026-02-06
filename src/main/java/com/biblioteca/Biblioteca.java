@@ -4,7 +4,7 @@ package com.biblioteca;
  * Representa una lógica para guardar los libros existentes y ofrece
  * métodos para que otras clases puedan modificar o consultar el catálogo.
  * Tambien almacena los usuarios existentes y los muestra.
- * Puese relizar prestamos de libros
+ * Puede relizar prestamos de libros
  * 
  * @author Claudio García Camons
  * @version 0.1a
@@ -28,12 +28,18 @@ public class Biblioteca {
     }
 
     // Funcion que permite agregar libros al cátalogo
-    public void agregarLibro(Libros libronew){
-        this.arrayLibros = Admin.agregarLibros(arrayLibros, libronew);      // mete en el array de libros el array nuevo que retorna la funcion agregarlibros
+    public void agregarLibro(Libros libroNew){
+        this.arrayLibros = Admin.agregarLibros(arrayLibros, libroNew);      // mete en el array de libros el array nuevo que retorna la funcion agregarlibros
     }
 
     // Mostramos el cátalogo de libros
     public Libros[] getLibros(){
+        for (int i = 0; i < arrayLibros.length; i++) {
+            if (arrayLibros[i] != null) {
+                System.out.println("Título: " + arrayLibros[i].getTitulo() + " | Autor: " + arrayLibros[i].getAutor());
+            }
+        }
+
         return arrayLibros;
     }
 
@@ -69,7 +75,19 @@ public class Biblioteca {
             if(this.arrayPrestamos==null){
                 this.arrayPrestamos = new Prestamos[1];
                 this.arrayPrestamos[0] = new Prestamos(user, libroPrestamo);
+            }else{
+                Prestamos [] arrayNuevo = new Prestamos[arrayPrestamos.length+1];
+
+                for(int n=0; n<arrayPrestamos.length; n++){
+                    arrayNuevo[n] = arrayPrestamos [n];
+                }
+
+                arrayNuevo [arrayNuevo.length-1] = new Prestamos(user, libroPrestamo);
+                this.arrayPrestamos = arrayNuevo;
             }
+            System.out.println("Prestamo realizado");
+        }else{
+            System.out.println("No se ha competado el prestamo. El libro o el usuario no existe");
         }
     }
 
