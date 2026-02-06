@@ -18,7 +18,6 @@ public class Usuario {
     private String email;
     private String contrasenia;
 
-
     public Usuario(String nombre, String apellido, String dni, String idUsuario, String email, String contrasenia) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -42,35 +41,50 @@ public class Usuario {
     public String getidusuario() {
         return idUsuario;
     }
-    
+
     public String getemail() {
         return email;
     }
 
-    public String getcontrasenia(){
+    public String getcontrasenia() {
         return contrasenia;
     }
-    /*crear array de usuario donde alojara los usuarios creados */
+    /* crear array de usuario donde alojara los usuarios creados no es posible */
 
+    /**
+     * Busca libros en la biblioteca comparando el texto con el título, autor o
+     * género.
+     * Muestra los resultados por consola e ignora mayúsculas y minúsculas.
+     *  @param biblioteca La biblioteca que contiene la lista de libros.
+     * @param busqueda El texto o palabra clave que queremos buscar.
+     */
     public void buscarLibro(Biblioteca biblioteca, String busqueda) {
-    // Obtenemos el array para no llamar al getter todo el tiempo
-    Libros[] lista = biblioteca.getLibros();
-    String b = busqueda.toLowerCase();
 
-    // Recorremos desde 0 hasta la longitud del array
-    for (int i = 0; i < lista.length; i++) {
-        
-        // Accedemos al libro en la posición 'i'
-        Libros libroActual = lista[i];
+        Libros[] listaLibros = biblioteca.getArrayLibros();
 
-        if (libroActual.getTitulo().toLowerCase().contains(b) || 
-            libroActual.getAutor().toLowerCase().contains(b)  ||
-            libroActual.getGeneroLib().contains(b)) {
-            
-            System.out.println("Índice [" + i + "] - Encontrado: " + libroActual.getTitulo());
-        }else{
-            System.out.println("Libro no encontrado");
+        System.out.println("--- RESULTADOS DE BÚSQUEDA: '" + busqueda + "' ---");
+        boolean encontradoAlguno = false; // Para saber si no encontramos nada al final
+
+        for (int i = 0; i < listaLibros.length; i++) {
+            Libros libroActual = listaLibros[i];
+
+            if (libroActual != null) {
+
+                boolean coincideTitulo = libroActual.getTitulo().equalsIgnoreCase(busqueda);
+                boolean coincideAutor = libroActual.getAutor().equalsIgnoreCase(busqueda);
+                boolean coincideGenero = libroActual.getGeneroLib().toString().equalsIgnoreCase(busqueda);
+
+                if (coincideTitulo || coincideAutor || coincideGenero) {
+                    System.out.println("Encontrado: " + libroActual.getTitulo() + " (Autor: " + libroActual.getAutor() + ")");
+                    encontradoAlguno = true;
+                }
+            }
+        }
+
+        if (encontradoAlguno == false) {
+            System.out.println("No se encontraron libros con ese criterio.");
         }
     }
-}
+    
+
 }
