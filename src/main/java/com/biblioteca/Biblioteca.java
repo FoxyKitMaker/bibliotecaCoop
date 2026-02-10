@@ -45,10 +45,12 @@ public class Biblioteca {
 
     // Añadir usuario
     public void agregarUsuario(Usuario usuario){
-        this.arrayUsuarios = Admin.agregarUsuario(usuario.getnombre(), usuario.getapellido(), usuario.getdni(), usuario.getcontrasenia());
+        this.arrayUsuarios = Admin.agregarUsuario(usuario.getnombre(), usuario.getapellido(), usuario.getdni(), 
+        usuario.getcontrasenia(), usuario.getidusuario(), usuario.getemail(), arrayUsuarios);
     }
 
     public Usuario [] getUsuarios(){
+        Admin.mostrarInfoUsuarios(arrayUsuarios);
         return arrayUsuarios;
     }
 
@@ -72,24 +74,27 @@ public class Biblioteca {
 
         if(userEncontrado && libroEncontrado){    //si existen las dos cosas, se procede a guardar el libro en el array de prestamos
 
-            if(this.arrayPrestamos==null){
+            if(this.arrayPrestamos.length==0){
                 this.arrayPrestamos = new Prestamos[1];
                 this.arrayPrestamos[0] = new Prestamos(user, libroPrestamo);
-            }else{
-                Prestamos [] arrayNuevo = new Prestamos[arrayPrestamos.length+1];
+            }else {
 
-                for(int n=0; n<arrayPrestamos.length; n++){
-                    arrayNuevo[n] = arrayPrestamos [n];
+                Prestamos[] nuevoArray = new Prestamos[this.arrayPrestamos.length + 1]; //nuevo array temp
+            
+                for (int k = 0; k < this.arrayPrestamos.length; k++) {
+                    nuevoArray[k] = this.arrayPrestamos[k];     //copiamos al nuevo array
                 }
-
-                arrayNuevo [arrayNuevo.length-1] = new Prestamos(user, libroPrestamo);
-                this.arrayPrestamos = arrayNuevo;
+            
+                nuevoArray[nuevoArray.length - 1] = new Prestamos(user, libroPrestamo);     //se añade el libro
+            
+                this.arrayPrestamos = nuevoArray;       // se le asigna el nuevo array al original
             }
-            System.out.println("Prestamo realizado");
-        }else{
-            System.out.println("No se ha competado el prestamo. El libro o el usuario no existe");
-        }
-    }
+            System.out.println("Préstamo registrado correctamente.");
 
+        } else {
+        System.out.println("Error: Usuario o libro no encontrados en el sistema.");
+        }
+
+    }
 
 }
