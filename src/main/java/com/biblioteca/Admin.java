@@ -29,13 +29,14 @@ public class Admin extends Usuario {
 
     private static String emailAdmin = "correoAdmin@admin.com";
     private int idAdmin;
-    private static String contraseña = "elPatica69";
+    private static String contraseniaAdmin = "elPatica69";
 
     public Admin(String nombre, String apellidos, String dni, String contrasenia, int idAdmin, int idUsuario, String email) {
         super(nombre, apellidos, dni, idUsuario, email, contrasenia);
         this.idAdmin = idAdmin;
-        emailAdmin = email;
+        email = emailAdmin;
         idAdmin = idUsuario;
+        contrasenia = contraseniaAdmin;
     }
 
     public String getNombre() {
@@ -58,8 +59,8 @@ public class Admin extends Usuario {
         return idAdmin;
     }
 
-    public static String getContraseña() {
-        return contraseña;
+    public static String getContraseniaAdmin() {
+        return contraseniaAdmin;
     }
 
     /**

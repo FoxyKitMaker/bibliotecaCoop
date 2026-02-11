@@ -86,9 +86,26 @@ public class Usuario {
         }
     }
     public void librosDisponibles(Biblioteca biblioteca){
-        System.out.println("Catalogo de libros disponibles ");
-        Libros [] librosDisponible;
+
+    System.out.println("--- CATÁLOGO DE LIBROS DISPONIBLES ---");
+    boolean disponible = false;
+    Libros[] listaDeLibros = biblioteca.getLibros();
+
+    // 1. Recorremos toda la estantería
+    for (int i = 0; i < listaDeLibros.length; i++) {
+        Libros libroActual = listaDeLibros[i];
+
+        if (libroActual != null) {
+             
+             System.out.println("Id: " + i + " | Título: " + libroActual.getTitulo() + " - " + libroActual.getAutor());
+             disponible = true;
+        }
+    }
+    if (!disponible) {
+        System.out.println("Lo sentimos, no hay ningun libros disponibles en este momento.");
+    }
+}
         
         
     }
-}
+

@@ -1,3 +1,4 @@
 *.pdf
 target/
 *.class
+/target/classes/com/biblioteca/*.class
