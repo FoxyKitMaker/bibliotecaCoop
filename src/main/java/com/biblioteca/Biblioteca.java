@@ -4,7 +4,8 @@ package com.biblioteca;
  * Representa una lógica para guardar los libros existentes y ofrece
  * métodos para que otras clases puedan modificar o consultar el catálogo.
  * Tambien almacena los usuarios existentes y los muestra.
- * Puede relizar prestamos de libros
+ * Puede relizar prestamos de libros, devolver libros prestados
+ * y mostrar libros que han sdo prestados
  * 
  * @author Claudio García Camons
  * @version 0.1a
@@ -46,7 +47,7 @@ public class Biblioteca {
     // Añadir usuario
     public void agregarUsuario(Usuario usuario){
         this.arrayUsuarios = Admin.agregarUsuario(usuario.getnombre(), usuario.getapellido(), usuario.getdni(), 
-        usuario.getcontrasenia(), usuario.getidusuario(), usuario.getemail(), arrayUsuarios);
+        usuario.getcontrasenia(), usuario.getidusuario(), usuario.getemail(), this.arrayUsuarios);
     }
 
     public Usuario [] getUsuarios(){
@@ -55,8 +56,11 @@ public class Biblioteca {
     }
 
 
-
-    // temporal
+    /**
+     * Metodo para hacer prestamos 
+     * @param user Recibe el usuario que hará el prestamo 
+     * @param libroPrestamo recibe el libro que se va a prestar
+     */ 
     public void realizarPrestamos(Usuario user, Libros libroPrestamo){
         boolean userEncontrado = false;
         boolean libroEncontrado = false;
@@ -91,9 +95,39 @@ public class Biblioteca {
             }
             System.out.println("Préstamo registrado correctamente.");
 
-        } else {
+        }else {
         System.out.println("Error: Usuario o libro no encontrados en el sistema.");
         }
+
+    }
+
+    /** Método para devolver un libro que ha sido prestado
+     * @param libro El libro que se va a devolver
+     * Sin finalizar por ahora
+     */ 
+    public void devolverLibroPrestado(Prestamos libro){
+        boolean encontrado=false;
+        int indiceencontrado=0; //indice de la posicion donde esta el libro prestado
+
+        for(int i=0; i<this.arrayPrestamos.length; i++){
+            if(arrayPrestamos[i] == libro){
+                encontrado=true;
+                indiceencontrado = i;
+            }
+        }
+
+        if(encontrado){
+            Prestamos [] arrayNuevo = new Prestamos [this.arrayPrestamos.length-1]; // nuevo array temporal
+
+            for(int j=0; j<arrayNuevo.length; j++){
+                if(j!=indiceencontrado){                // omitimos la posicion donde esta el libro prestado
+                    arrayNuevo[j] = arrayPrestamos[j];  // y vamos copiando lo del array viejo al nuevo
+                }
+            }
+
+            this.arrayPrestamos = arrayNuevo;  // por ultimo actualizamos el array original 
+        }
+
 
     }
 
