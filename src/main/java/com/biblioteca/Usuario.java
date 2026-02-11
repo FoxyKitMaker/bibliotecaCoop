@@ -22,6 +22,7 @@ public class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.email = email;
         this.idUsuario = idUsuario;
         this.contrasenia = contrasenia;
     }

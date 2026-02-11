@@ -31,12 +31,9 @@ public class Admin extends Usuario {
     private int idAdmin;
     private static String contraseniaAdmin = "elPatica69";
 
-    public Admin(String nombre, String apellidos, String dni, String contrasenia, int idAdmin, int idUsuario, String email) {
-        super(nombre, apellidos, dni, idUsuario, email, contrasenia);
+    public Admin(String nombre, String apellidos, String dni, int idAdmin, int idUsuario, String email) {
+        super(nombre, apellidos, dni, idUsuario, emailAdmin, contraseniaAdmin);
         this.idAdmin = idAdmin;
-        email = emailAdmin;
-        idAdmin = idUsuario;
-        contrasenia = contraseniaAdmin;
     }
 
     public String getNombre() {
