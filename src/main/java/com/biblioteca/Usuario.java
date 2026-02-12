@@ -26,27 +26,27 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public String getapellido() {
+    public String getApellido() {
         return apellido;
     }
 
-    public String getdni() {
+    public String getDni() {
         return dni;
     }
 
-    public int getidusuario() {
+    public int getIdusuario() {
         return idUsuario;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public String getcontrasenia() {
+    public String getContrasenia() {
         return contrasenia;
     }
     /* crear array de usuario donde alojara los usuarios creados no es posible */
