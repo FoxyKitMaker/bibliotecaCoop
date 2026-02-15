@@ -71,7 +71,7 @@ public class Admin extends Usuario {
      * @param nuevoLibro       El objeto Libro que se desea añadir.
      * @return Un nuevo array de Libros que incluye el nuevo ejemplar.
      */
-    public Libros[] agregarLibros(Libros[] librosActuales, Libros nuevoLibro) {
+    public static Libros[] agregarLibros(Libros[] librosActuales, Libros nuevoLibro) {
         
         // Crear un nuevo array con una posición más
         Libros[] nuevosLibros = new Libros[librosActuales.length + 1];
@@ -95,7 +95,7 @@ public class Admin extends Usuario {
      * @param nuevoLibro       El objeto Libro que se desea eliminar.
      * @return Un nuevo array de Libros sin el ejemplar eliminado.
      */
-    public Libros[] eliminarLibros(Libros[] librosActuales, Libros libroAEliminar) {
+    public static Libros[] eliminarLibros(Libros[] librosActuales, Libros libroAEliminar) {
         
         // Crear un nuevo array con una posición menos
         Libros[] nuevosLibros = new Libros[librosActuales.length - 1];
@@ -134,7 +134,7 @@ public class Admin extends Usuario {
      * (La clase Usuario no tenía este método implementado, se añade aquí la lógica).
      * @param Libro[] Array de los libros
      */
-    public void mostrarLibros(Libros[] libros) {
+    public static void mostrarLibros(Libros[] libros) {
         for (Libros libro : libros) {
             if (libro != null) {
                 System.out.println("Título: " + libro.getTitulo() + " | Autor: " + libro.getAutor());
@@ -154,7 +154,7 @@ public class Admin extends Usuario {
      * 
      */
 
-    public void agregarUsuario (String nombre, String apellidos, String dni, String contrasenia, int idUsuario, String email, Usuario[] usuariosActuales) {
+    public static Usuario[] agregarUsuario (String nombre, String apellidos, String dni, String contrasenia, int idUsuario, String email, Usuario[] usuariosActuales) {
 
         // El constructor de Usuario pide (nombre, apellido, dni, idUsuario).
         // No acepta email ni contraseña en el constructor actual, se usa el DNI como ID provisional.
@@ -167,6 +167,7 @@ public class Admin extends Usuario {
         }
 
         nuevoArrayUsuarios[nuevoArrayUsuarios.length - 1] = nuevoUsuario;
+        return nuevoArrayUsuarios;
     }
 
     /**
@@ -174,7 +175,7 @@ public class Admin extends Usuario {
      * @param nuevoArrayUsuarios[] Array de los usuarios
      */
 
-    public void mostrarInfoUsuarios(Usuario nuevoArrayUsuarios[]) {
+    public static void mostrarInfoUsuarios(Usuario nuevoArrayUsuarios[]) {
 
         for(int i = 0; i < nuevoArrayUsuarios.length; i++) {
             

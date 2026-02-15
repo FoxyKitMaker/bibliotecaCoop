@@ -33,6 +33,11 @@ public class Biblioteca {
         this.arrayLibros = Admin.agregarLibros(arrayLibros, libroNew);      // mete en el array de libros el array nuevo que retorna la funcion agregarlibros
     }
 
+    // Funcion que permite eliminar libros del cátalogo
+    public void eliminarLibros(Biblioteca arrayLibros, Libros libroParaEliminar){
+        Admin.eliminarLibros(this.arrayLibros, libroParaEliminar);
+    }
+
     // Mostramos el cátalogo de libros
     public Libros[] getLibros(){
         for (int i = 0; i < arrayLibros.length; i++) {
