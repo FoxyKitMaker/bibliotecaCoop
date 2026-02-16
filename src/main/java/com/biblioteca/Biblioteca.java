@@ -106,10 +106,9 @@ public class Biblioteca {
 
     }
 
-    /** Método para devolver un libro que ha sido prestado
+    /** Método para que el usuario devuelva un libro que ha sido prestado
      * @param libro El libro que se va a devolver
-     * Sin finalizar por ahora
-     */ 
+    */ 
     public void devolverLibroPrestado(Prestamos libro){
         boolean encontrado=false;
         int indiceencontrado=0; //indice de la posicion donde esta el libro prestado
@@ -118,19 +117,25 @@ public class Biblioteca {
             if(arrayPrestamos[i] == libro){
                 encontrado=true;
                 indiceencontrado = i;
+                break;
             }
         }
 
         if(encontrado){
             Prestamos [] arrayNuevo = new Prestamos [this.arrayPrestamos.length-1]; // nuevo array temporal
+            int n=0; //variable para controlar las posiciones del arrayNuevo en el bucle for
 
-            for(int j=0; j<arrayNuevo.length; j++){
+            for(int j=0; j<arrayPrestamos.length; j++){     // se recorre todo el array viejo porque 1 posicion se saltará asi que tendra la misma longitud que el arrayNuevo
                 if(j!=indiceencontrado){                // omitimos la posicion donde esta el libro prestado
-                    arrayNuevo[j] = arrayPrestamos[j];  // y vamos copiando lo del array viejo al nuevo
+                    arrayNuevo[n] = arrayPrestamos[j];  // y vamos copiando lo del array viejo al nuevo
+                    n++;
                 }
             }
-
+            System.out.println("Libro devuelto correctamente");
             this.arrayPrestamos = arrayNuevo;  // por ultimo actualizamos el array original 
+
+        }else{
+            System.out.println("No se ha encuentrado el libro en la biblioteca");
         }
 
 
