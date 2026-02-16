@@ -5,7 +5,7 @@ package com.biblioteca;
  * métodos para que otras clases puedan modificar o consultar el catálogo.
  * Tambien almacena los usuarios existentes y los muestra.
  * Puede relizar prestamos de libros, devolver libros prestados
- * y mostrar libros que han sdo prestados
+ * y mostrar libros que han sido prestados
  * 
  * @author Claudio García Camons
  * @version 0.1a
@@ -139,6 +139,21 @@ public class Biblioteca {
         }
 
 
+    }
+
+    // Metodo para mostrar los libros que hayan sido prestados
+    public void mostrarLibrosPrestados(){
+
+        if(arrayPrestamos.length > 0){
+            System.out.println("------ LIBROS ACTUALMENTE PRESTADOS: ------");
+
+            for(int i=0; i<arrayPrestamos.length; i++){
+                System.out.println("|| Indice: " + i + " || ISBN: " + arrayPrestamos[i].getLibrosPrestados()[0].getIsbn() + " || Título: " + arrayPrestamos[i].getLibrosPrestados()[0].getTitulo() 
+                + " || Autor: " + arrayPrestamos[i].getLibrosPrestados()[0].getAutor() );
+            }
+        }else{
+            System.out.println("Error. No hay existencias de libros prestados");
+        }
     }
 
 }
