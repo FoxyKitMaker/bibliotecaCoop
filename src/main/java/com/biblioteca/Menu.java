@@ -18,14 +18,13 @@ public class Menu {
 
     static Admin admin1 = new Admin("Raúl", "Carrera Custodio", "09215030B", 1, 1, null);
     static Usuario usuario1 = new Admin("Manuel Enrique", "Vargas Béjar", "0911480B", 2, 2, null);
-    // Usuario normal para pruebas (no admin)
     static Usuario usuario2 = new Usuario("Juan", "Pérez", "12345678Z", 3, "juan@email.com", "1234");
 
     /**
-     * Método principal que gestiona el inicio de sesión y la navegación por los menús.
+     * Método principal que gestiona el inicio de sesión y la navegación por los
+     * menús.
      */
     public static void menu() {
-        // Inicialización de datos de prueba
         biblioteca.agregarUsuario(admin1);
         biblioteca.agregarUsuario(usuario1);
         biblioteca.agregarUsuario(usuario2);
@@ -33,8 +32,8 @@ public class Menu {
         System.out.println("--- BIENVENIDO A LA BIBLIOTECA ---");
         System.out.println("Introduce el nombre de usuario: ");
         String nombreUsuario = sc.nextLine();
-        
-        // Búsqueda simple del usuario para el login (simulación)
+
+        // Búsqueda simple del usuario para el login
         Usuario usuarioLogueado = null;
         if (admin1.getnombre().equalsIgnoreCase(nombreUsuario)) {
             usuarioLogueado = admin1;
@@ -83,11 +82,13 @@ public class Menu {
             System.out.println("3. Mostrar usuarios");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
-            
-            try {
-                opcion = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
+
+            String entrada = sc.nextLine();
+            if (entrada.equals("1") || entrada.equals("2") || entrada.equals("3") || entrada.equals("4")) {
+                opcion = Integer.parseInt(entrada);
+            } else {
                 opcion = 0;
+                System.out.println("Error: Debes introducir un número válido.");
             }
 
             switch (opcion) {
@@ -98,7 +99,8 @@ public class Menu {
                     String autor = sc.nextLine();
                     System.out.println("Introduce ISBN:");
                     String isbn = sc.nextLine();
-                    // Se crea un libro con valores por defecto para género y disponibilidad por simplicidad
+                    // Se crea un libro con valores por defecto para género y disponibilidad por
+                    // simplicidad
                     Libros nuevoLibro = new Libros(titulo, autor, isbn, GeneroLib.NARRATIVA, "Disponible", 0);
                     biblioteca.agregarLibro(nuevoLibro);
                     System.out.println("Libro agregado correctamente.");
@@ -120,6 +122,7 @@ public class Menu {
 
     /**
      * Muestra las opciones disponibles para un usuario estándar.
+     * 
      * @param usuario El usuario que está utilizando el sistema.
      */
     public static void menuUsuario(Usuario usuario) {
@@ -131,10 +134,12 @@ public class Menu {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
 
-            try {
-                opcion = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
+            String entrada = sc.nextLine();
+            if (entrada.equals("1") || entrada.equals("2") || entrada.equals("3")) {
+                opcion = Integer.parseInt(entrada);
+            } else {
                 opcion = 0;
+                System.out.println("Error: Debes introducir un número válido.");
             }
 
             switch (opcion) {
@@ -155,7 +160,4 @@ public class Menu {
         } while (opcion != 3);
     }
 
-    public static void main(String[] args) {
-        menu();
-    }
 }
