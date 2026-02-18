@@ -165,4 +165,22 @@ public class Biblioteca {
         }
     }
 
+    //Metodos que dan datos para quien haga las estadisticas y reportes
+
+    public int getTotalPrestamos(){
+        return totalPrestamos;
+    }
+
+    public Prestamos[] getArrayPrestamos(){
+        return arrayPrestamos;
+    }
+
+    public Libros[] getArrayLibros(){
+        return arrayLibros;
+    }
+
+    public Usuario[] getArrayUsuarios(){
+        return arrayUsuarios;
+    }
+
 }
