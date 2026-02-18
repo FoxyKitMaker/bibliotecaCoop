@@ -22,6 +22,7 @@ public class Usuario {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
+        this.email = email;
         this.idUsuario = idUsuario;
         this.contrasenia = contrasenia;
     }
@@ -55,8 +56,9 @@ public class Usuario {
      * Busca libros en la biblioteca comparando el texto con el título, autor o
      * género.
      * Muestra los resultados por consola e ignora mayúsculas y minúsculas.
-     *  @param biblioteca La biblioteca que contiene la lista de libros.
-     * @param busqueda El texto o palabra clave que queremos buscar.
+     * 
+     * @param biblioteca La biblioteca que contiene la lista de libros.
+     * @param busqueda   El texto o palabra clave que queremos buscar.
      */
     public void buscarLibro(Biblioteca biblioteca, String busqueda) {
 
@@ -75,7 +77,8 @@ public class Usuario {
                 boolean coincideGenero = libroActual.getGeneroLib().toString().equalsIgnoreCase(busqueda);
 
                 if (coincideTitulo || coincideAutor || coincideGenero) {
-                    System.out.println("Encontrado: " + libroActual.getTitulo() + " (Autor: " + libroActual.getAutor() + ")");
+                    System.out.println(
+                            "Encontrado: " + libroActual.getTitulo() + " (Autor: " + libroActual.getAutor() + ")");
                     encontradoAlguno = true;
                 }
             }
@@ -85,27 +88,27 @@ public class Usuario {
             System.out.println("No se encontraron libros con ese criterio.");
         }
     }
-    public void librosDisponibles(Biblioteca biblioteca){
 
-    System.out.println("--- CATÁLOGO DE LIBROS DISPONIBLES ---");
-    boolean disponible = false;
-    Libros[] listaDeLibros = biblioteca.getLibros();
+    public void librosDisponibles(Biblioteca biblioteca) {
 
-    // 1. Recorremos toda la estantería
-    for (int i = 0; i < listaDeLibros.length; i++) {
-        Libros libroActual = listaDeLibros[i];
+        System.out.println("--- CATÁLOGO DE LIBROS DISPONIBLES ---");
+        boolean disponible = false;
+        Libros[] listaDeLibros = biblioteca.getLibros();
 
-        if (libroActual != null) {
-             
-             System.out.println("Id: " + i + " | Título: " + libroActual.getTitulo() + " - " + libroActual.getAutor());
-             disponible = true;
+        // 1. Recorremos toda la estantería
+        for (int i = 0; i < listaDeLibros.length; i++) {
+            Libros libroActual = listaDeLibros[i];
+
+            if (libroActual != null) {
+
+                System.out
+                        .println("Id: " + i + " | Título: " + libroActual.getTitulo() + " - " + libroActual.getAutor());
+                disponible = true;
+            }
+        }
+        if (!disponible) {
+            System.out.println("Lo sentimos, no hay ningun libros disponibles en este momento.");
         }
     }
-    if (!disponible) {
-        System.out.println("Lo sentimos, no hay ningun libros disponibles en este momento.");
-    }
-}
-        
-        
-    }
 
+}
