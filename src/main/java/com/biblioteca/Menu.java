@@ -56,11 +56,11 @@ public class Menu {
 
         switch (comprobador) {
             case 1: // Administrador
-                System.out.println("Inicio de sesión exitoso como ADMINISTRADOR.");
+                System.out.println("Inicio de sesión como ADMINISTRADOR.");
                 menuAdmin();
                 break;
             case 2: // Usuario
-                System.out.println("Inicio de sesión exitoso como USUARIO.");
+                System.out.println("Inicio de sesión como USUARIO.");
                 menuUsuario(usuarioLogueado);
                 break;
             case -1:
