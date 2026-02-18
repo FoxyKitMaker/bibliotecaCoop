@@ -16,6 +16,7 @@ public class Biblioteca {
     private Libros [] arrayLibros;
     private Usuario [] arrayUsuarios;
     private Prestamos [] arrayPrestamos;
+    private int totalPrestamos;
 
     public Biblioteca(String nombre){
         this.nombre = nombre;
@@ -35,7 +36,7 @@ public class Biblioteca {
 
     // Funcion que permite eliminar libros del cátalogo
     public void eliminarLibros(Biblioteca arrayLibros, Libros libroParaEliminar){
-        Admin.eliminarLibros(this.arrayLibros, libroParaEliminar);
+        this.arrayLibros = Admin.eliminarLibros(this.arrayLibros, libroParaEliminar);
     }
 
     // Mostramos el cátalogo de libros
@@ -99,7 +100,8 @@ public class Biblioteca {
                 this.arrayPrestamos = nuevoArray;       // se le asigna el nuevo array al original
             }
             System.out.println("Préstamo registrado correctamente.");
-
+            totalPrestamos++;   // se suma un prestamo al registro del historial de prestamos totales
+            libroPrestamo.registrarPrestamo();  //se registra un nuevo prestamo de ese libro
         }else {
         System.out.println("Error: Usuario o libro no encontrados en el sistema.");
         }
