@@ -53,8 +53,8 @@ public class Biblioteca {
 
     // Añadir usuario
     public void agregarUsuario(Usuario usuario) {
-        this.arrayUsuarios = Admin.agregarUsuario(usuario.getnombre(), usuario.getapellido(), usuario.getdni(),
-                usuario.getcontrasenia(), usuario.getidusuario(), usuario.getemail(), this.arrayUsuarios);
+        this.arrayUsuarios = Admin.agregarUsuario(usuario.getNombre(), usuario.getApellido(), usuario.getDni(),
+                usuario.getContrasenia(), usuario.getIdusuario(), usuario.getEmail(), this.arrayUsuarios);
     }
 
     public Usuario[] getUsuarios() {
