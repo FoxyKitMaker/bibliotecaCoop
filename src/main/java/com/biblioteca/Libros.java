@@ -5,7 +5,7 @@ package com.biblioteca;
  * Permite:
  * Crear libros asignandoles: titulo, autor, isbn y un genero
  * 
- * @author Claudio García Camons
+ * @author Manuel Enrique Vargas Béjar
  * @version 0.1a
  */
 
