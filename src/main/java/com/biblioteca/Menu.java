@@ -13,40 +13,31 @@ public class Menu {
 
     public static Scanner sc = new Scanner(System.in);
 
-    // Instancia de la biblioteca para gestionar los datos
     static Biblioteca biblioteca = new Biblioteca("Biblioteca Cooperativa");
 
     static Admin admin1 = new Admin("Raúl", "Carrera Custodio", "09215030B", 1, 1, null);
-    static Usuario usuario1 = new Admin("Manuel Enrique", "Vargas Béjar", "0911480B", 2, 2, null);
-    static Usuario usuario2 = new Usuario("Juan", "Pérez", "12345678Z", 3, "juan@email.com", "1234");
-
     /**
      * Método principal que gestiona el inicio de sesión y la navegación por los
      * menús.
      */
     public static void menu() {
         biblioteca.agregarUsuario(admin1);
-        biblioteca.agregarUsuario(usuario1);
-        biblioteca.agregarUsuario(usuario2);
 
         System.out.println("--- BIENVENIDO A LA BIBLIOTECA ---");
         System.out.println("Introduce el nombre de usuario: ");
         String nombreUsuario = sc.nextLine();
 
+        
         // Búsqueda simple del usuario para el login
         Usuario usuarioLogueado = null;
-        if (admin1.getnombre().equalsIgnoreCase(nombreUsuario)) {
-            usuarioLogueado = admin1;
-        } else if (usuario1.getnombre().equalsIgnoreCase(nombreUsuario)) {
-            usuarioLogueado = usuario1;
-        } else if (usuario2.getnombre().equalsIgnoreCase(nombreUsuario)) {
-            usuarioLogueado = usuario2;
-        }
+        // for(nombreUsuario.equals(usuarioLogueado.getNombre())) {
+            
+        // }
 
-        if (usuarioLogueado == null) {
-            System.out.println("Error: El usuario no existe.");
-            return;
-        }
+        // if (usuarioLogueado == null) {
+        //     System.out.println("Error: El usuario no existe.");
+        //     return;
+        // }
 
         System.out.println("Introduce la contraseña: ");
         String contrasenia = sc.nextLine();
