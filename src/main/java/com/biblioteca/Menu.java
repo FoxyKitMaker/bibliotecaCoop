@@ -35,11 +35,11 @@ public class Menu {
 
         // Búsqueda simple del usuario para el login
         Usuario usuarioLogueado = null;
-        if (admin1.getnombre().equalsIgnoreCase(nombreUsuario)) {
+        if (admin1.getNombre().equalsIgnoreCase(nombreUsuario)) {
             usuarioLogueado = admin1;
-        } else if (usuario1.getnombre().equalsIgnoreCase(nombreUsuario)) {
+        } else if (usuario1.getNombre().equalsIgnoreCase(nombreUsuario)) {
             usuarioLogueado = usuario1;
-        } else if (usuario2.getnombre().equalsIgnoreCase(nombreUsuario)) {
+        } else if (usuario2.getNombre().equalsIgnoreCase(nombreUsuario)) {
             usuarioLogueado = usuario2;
         }
 

@@ -37,11 +37,11 @@ public class Admin extends Usuario {
     }
 
     public String getNombre() {
-        return super.getnombre();
+        return super.getNombre();
     }
 
     public String getApellidos() {
-        return super.getapellido();
+        return super.getApellido();
     }
 
     public static String getEmailAdmin() {
@@ -49,7 +49,7 @@ public class Admin extends Usuario {
     }
 
     public String getDni() {
-        return super.getdni();
+        return super.getDni();
     }
 
     public int getIdAdmin() {
@@ -176,9 +176,9 @@ public class Admin extends Usuario {
 
         for(int i = 0; i < nuevoArrayUsuarios.length; i++) {
             
-            System.out.println(nuevoArrayUsuarios[i].getnombre() + " " + nuevoArrayUsuarios[i].getapellido());
-            System.out.println(nuevoArrayUsuarios[i].getdni());
-            System.out.println(nuevoArrayUsuarios[i].getemail());
+            System.out.println(nuevoArrayUsuarios[i].getNombre() + " " + nuevoArrayUsuarios[i].getApellido());
+            System.out.println(nuevoArrayUsuarios[i].getDni());
+            System.out.println(nuevoArrayUsuarios[i].getEmail());
         }
     }
 }

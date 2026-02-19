@@ -18,6 +18,8 @@ public class Usuario {
     private String email;
     private String contrasenia;
 
+    public Usuario(){}
+    
     public Usuario(String nombre, String apellido, String dni, int idUsuario, String email, String contrasenia) {
         this.nombre = nombre;
         this.apellido = apellido;
