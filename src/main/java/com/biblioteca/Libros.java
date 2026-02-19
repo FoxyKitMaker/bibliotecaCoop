@@ -49,5 +49,9 @@ public class Libros {
     public int getnPrestamos(){
         return nPrestamos;
     }
+
+    public void registrarPrestamo(){
+        nPrestamos++;
+    }
     
 }

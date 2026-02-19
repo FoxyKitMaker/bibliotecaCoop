@@ -38,7 +38,7 @@ public class Login {
                 comprobador = -1;
             }
         } else {
-            if (usuario.getcontrasenia() == contrasenia) {
+            if (usuario.getContrasenia() == contrasenia) {
                 comprobador = 2;
             } else {
                 comprobador = -1;
