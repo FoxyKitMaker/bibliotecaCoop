@@ -17,12 +17,14 @@ public class Biblioteca {
     private Usuario [] arrayUsuarios;
     private Prestamos [] arrayPrestamos;
     private int totalPrestamos;
+    private GestionLibros arrayGestion;
 
     public Biblioteca(String nombre) {
         this.nombre = nombre;
         this.arrayLibros = new Libros[0];
         this.arrayUsuarios = new Usuario[0];
         this.arrayPrestamos = new Prestamos[0];
+        arrayGestion = new GestionLibros();
     }
 
     public String getNombre() {
