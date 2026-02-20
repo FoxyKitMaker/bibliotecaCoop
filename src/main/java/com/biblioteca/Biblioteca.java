@@ -35,16 +35,14 @@ public class Biblioteca {
     }
 
     // Funcion que permite eliminar libros del cátalogo
-    // Corregida: se ha eliminado el parámetro 'Biblioteca' que sobraba
     public void eliminarLibros(Libros libroParaEliminar){
-        // Actualizamos el array interno del gestor llamando al método de Admin
         this.arrayGestion.libros = Admin.eliminarLibros(this.arrayGestion.libros, libroParaEliminar);
     }
 
     // Mostramos el cátalogo de libros usando el método del gestor
-    public GestionLibros getLibros() {
+    public Libros[] getLibros() {
         arrayGestion.mostrar();
-        return arrayGestion;
+        return arrayGestion.libros; 
     }
 
     // Añadir usuario
