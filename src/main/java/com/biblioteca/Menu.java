@@ -30,14 +30,18 @@ public class Menu {
         
         // Búsqueda simple del usuario para el login
         Usuario usuarioLogueado = null;
-        // for(nombreUsuario.equals(usuarioLogueado.getNombre())) {
-            
-        // }
+        Usuario[] usuarios = biblioteca.getUsuarios();
+        for (int i = 0; i < usuarios.length; i++) {
+            if (nombreUsuario.equals(usuarios[i].getNombre())) {
+                usuarioLogueado = usuarios[i];
+                break;
+            }
+        }
 
-        // if (usuarioLogueado == null) {
-        //     System.out.println("Error: El usuario no existe.");
-        //     return;
-        // }
+        if (usuarioLogueado == null) {
+            System.out.println("Error: El usuario no existe.");
+            return;
+        }
 
         System.out.println("Introduce la contraseña: ");
         String contrasenia = sc.nextLine();
@@ -47,7 +51,7 @@ public class Menu {
 
         switch (comprobador) {
             case 1: // Administrador
-                System.out.println("Inicio de sesión como ADMINISTRADOR.");
+                System.out.println("Inicio de sesión como ADMINSTRADOR.");
                 menuAdmin();
                 break;
             case 2: // Usuario
@@ -65,7 +69,8 @@ public class Menu {
      * Muestra las opciones disponibles para el administrador.
      */
     public static void menuAdmin() {
-        int opcion = 0;
+        boolean salir = false;
+
         do {
             System.out.println("\n--- MENÚ ADMINISTRADOR ---");
             System.out.println("1. Agregar Libro");
@@ -74,26 +79,11 @@ public class Menu {
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
 
-            String entrada = sc.nextLine();
-            if (entrada.equals("1") || entrada.equals("2") || entrada.equals("3") || entrada.equals("4")) {
-                opcion = Integer.parseInt(entrada);
-            } else {
-                opcion = 0;
-                System.out.println("Error: Debes introducir un número válido.");
-            }
+            int opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduce Título:");
-                    String titulo = sc.nextLine();
-                    System.out.println("Introduce Autor:");
-                    String autor = sc.nextLine();
-                    System.out.println("Introduce ISBN:");
-                    String isbn = sc.nextLine();
-                    // Se crea un libro con valores por defecto para género y disponibilidad por
-                    // simplicidad
-                    Libros nuevoLibro = new Libros(titulo, autor, isbn, GeneroLib.NARRATIVA, "Disponible", 0);
-                    biblioteca.agregarLibro(nuevoLibro);
+                    
                     System.out.println("Libro agregado correctamente.");
                     break;
                 case 2:
@@ -104,11 +94,12 @@ public class Menu {
                     break;
                 case 4:
                     System.out.println("Cerrando sesión de administrador...");
+                    salir = true;
                     break;
                 default:
                     System.out.println("Opción no válida.");
             }
-        } while (opcion != 4);
+        } while (!salir);
     }
 
     /**
@@ -117,7 +108,8 @@ public class Menu {
      * @param usuario El usuario que está utilizando el sistema.
      */
     public static void menuUsuario(Usuario usuario) {
-        int opcion = 0;
+        boolean salir = false;
+
         do {
             System.out.println("\n--- MENÚ USUARIO ---");
             System.out.println("1. Ver libros disponibles");
@@ -125,13 +117,7 @@ public class Menu {
             System.out.println("3. Salir");
             System.out.print("Seleccione una opción: ");
 
-            String entrada = sc.nextLine();
-            if (entrada.equals("1") || entrada.equals("2") || entrada.equals("3")) {
-                opcion = Integer.parseInt(entrada);
-            } else {
-                opcion = 0;
-                System.out.println("Error: Debes introducir un número válido.");
-            }
+            int opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
@@ -144,11 +130,12 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("Cerrando sesión de usuario...");
+                    salir = true;
                     break;
                 default:
                     System.out.println("Opción no válida.");
             }
-        } while (opcion != 3);
+        } while (!salir);
     }
 
 }
