@@ -53,5 +53,9 @@ public class Libros {
     public void registrarPrestamo(){
         nPrestamos++;
     }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
     
 }
